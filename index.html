@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Point for DOM</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="./CSS_font_awesome/font-awesome.min.css" >
+    <link rel="stylesheet" href="./layout.css">
+</head>
+<body>
+    <table border="5">
+    
+        <caption>Shopping Cart</caption>
+        
+        <tr>
+            <th scope="col">Delete Item</th>
+            <th scope="col">decreasing by one</th>
+            <th scope="col">increasing by one</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price Per Item</th>
+            <th scope="col">Price for Items</th>
+            <th scope="col">Add to Favourites</th>
+            <th scope="col"><button type="button" id="Total_Price" onclick="My_Function()">Total Price</button>
+                <div id="total_price">
+                   0 
+                </div>
+            </th>
+            
+        </tr>
+        
+        <tr class="delete_row">
+            <td><button type="button" class="deleting">del</button></td>
+            <td><button type="button" class="subtract_by_one">-</button></td>
+            <td><button type="button" class="add_by_one">+</button></td>
+            <td>Rimini 2460/02 Canvas Lace-Up Casual Shoes For Men-Brown.</td>
+            <td class="number_of_items">0</td>
+            <td class="price_for_each_item">97.00</td>
+            <td class="total_price_for_n_of_this_item">0</td>
+            <td><button type="button" style="margin-left:40%; ">
+                   <i class="fa fa-heart red_black" aria-hidden="true"><div style="display: none;" class="number_of_favourite_clicks">0</div></i>
+                </button>
+            </td>
+            
+
+        </tr>
+
+        
+        <tr  class="delete_row">
+            <td><button type="button" class="deleting">del</button></td>
+            <td><button type="button" class="subtract_by_one">-</button></td>
+            <td><button type="button" class="add_by_one">+</button></td>
+            <td>sport fashion sneakers for men Black/White .</td>
+            <td class="number_of_items">0</td>
+            <td class="price_for_each_item">150.00</td>
+            <td class="total_price_for_n_of_this_item">0</td>
+            <td><button type="button" style="margin-left:40%; ">
+                   <i class="fa fa-heart red_black" aria-hidden="true"><div style="display: none;" class="number_of_favourite_clicks">0</div></i>
+                </button>
+            </td>
+
+        </tr>
+
+        <tr class="delete_row">
+            <td><button type="button" class="deleting">del</button></td>
+            <td><button type="button" class="subtract_by_one">-</button></td>
+            <td><button type="button" class="add_by_one">+</button></td>
+            <td>Book</td>
+            <td class="number_of_items">0</td>
+            <td class="price_for_each_item">250.00</td>
+            <td class="total_price_for_n_of_this_item">0</td>
+            <td><button type="button" style="margin-left:40%; ">
+                   <i class="fa fa-heart red_black" aria-hidden="true"><div style="display: none;" class="number_of_favourite_clicks">0</div></i>
+                </button>
+            </td>
+            
+
+        </tr>
+        
+        
+        
+
+
+        
+    
+    </table>
+
+    
+
+    
+    
+    
+    <script>
+        
+        
+        var x_x = document.querySelectorAll(".deleting") ;
+        
+        var y_y = document.querySelectorAll(".delete_row") ;
+
+        /*
+        document.getElementById("deleting").onclick=function(){
+        document.getElementById("delete_row").innerHTML=null ;
+        */
+
+
+
+        for (let z = 0 ; z< x_x.length ; z=z+1 )
+        {
+                x_x[z].onclick=function(){
+                y_y[z].innerHTML=null ;
+            }
+        }
+    
+
+       
+       
+       
+       
+       
+        //for increasing
+        var plus = document.querySelectorAll(".add_by_one") ; 
+        var minus = document.querySelectorAll(".subtract_by_one") ;
+        var x_string = document.querySelectorAll(".number_of_items") ;
+        var y_string = document.querySelectorAll(".price_for_each_item") ;
+        var equal = document.querySelectorAll(".total_price_for_n_of_this_item") ;
+        console.log("equal :" , equal) ;
+        var ch_col = document.querySelectorAll(".red_black") ; // red aw black
+        console.log("ch_col :" , ch_col) ;
+        var no_of_clicks = document.querySelectorAll(".number_of_favourite_clicks") ; // 0,1,2,3,4,5,6,...
+        console.log("no_of_clicks :" , no_of_clicks) ;
+        
+        
+        for(let xx=0 ; xx<plus.length ; xx=xx+1){
+            
+            plus[xx].onclick=function(){
+            
+            
+            let x_int = [] ;
+            x_int.length = x_string.length ;  
+
+            x_int[xx] = parseInt(x_string[xx].innerHTML) ;
+            
+            
+            let y_int = [] ;
+            
+            y_int.length = y_string.length ; 
+
+            y_int[xx] = parseInt(y_string[xx].innerHTML) ;
+            x_int[xx] = x_int[xx] + 1 ;
+            x_string[xx].innerHTML = x_int[xx] ;
+            let z =  y_int[xx] * x_int[xx] ;
+             
+            equal[xx].innerHTML = z ; 
+            
+        }
+
+        }
+ 
+
+        // for decreasing
+
+        for (let xx=0 ; xx<minus.length ; xx=xx+1){
+            
+            minus[xx].onclick=function (){
+             
+             let x_int = [] ;
+             x_int.length = x_string.length ;
+             
+             x_int[xx] = parseInt(x_string[xx].innerHTML) ;
+             x_int[xx]=x_int[xx] - 1 ;
+ 
+             
+             
+             if (x_int[xx] >= 0 ){ 
+             
+             let y_int = [] ;
+             y_int.length = y_string.length ;
+             y_int[xx] = parseInt(y_string[xx].innerHTML) ;
+             x_string[xx].innerHTML = x_int[xx] ;
+             let z = y_int[xx] * x_int[xx] ;
+             equal[xx].innerHTML = z ; 
+ 
+             }
+             else{
+ 
+                 equal[xx].innerHTML = 0 ; 
+              }
+ 
+             
+         }
+
+        }
+        
+
+        // modulus : is the remainder of the division operation 
+
+        for(let xx = 0 ; xx< ch_col.length ; xx=xx+1){
+                
+                ch_col[xx].onclick=function(){
+                let r_int = [] ;
+                r_int.length = no_of_clicks.length ; 
+                
+                r_int[xx] = parseInt(no_of_clicks[xx].innerHTML) ;
+                r_int[xx] = r_int[xx] + 1 ;
+            
+                if (r_int[xx] % 2 == 0){
+                ch_col[xx].style.color = "black" ;
+                }
+               else{
+                ch_col[xx].style.color = "red" ;
+                  }
+                  no_of_clicks[xx].innerHTML = r_int[xx] ;
+                
+
+            }
+
+            
+
+
+            }
+
+            var sum = 0 ;
+            //document.getElementById("Total_Price").onclick=function(){
+                function My_Function (){
+                   
+                for(let xx=0 ; xx<equal.length ; xx=xx+1){
+                
+                
+                sum = sum + parseInt(equal[xx].innerHTML);    
+                
+                }
+                
+                document.getElementById("total_price").innerHTML = sum ;
+                
+            }
+
+            //document.getElementById("total_price").innerHTML = sum ;
+        
+
+            
+
+
+            
+            
+        
+
+
+
+
+
+        
+
+            
+
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
